@@ -195,6 +195,7 @@ fn main() {
 ```
 
 # Functions
+
 ```rust
 fn main() {
     println!("Hello, world!");
@@ -206,3 +207,10 @@ fn another_function() {
     println!("Another function.");
 }
 ```
+
+## Statements and Expressions
+
+- **Statements** are instructions that perform some action and do not return a value.
+- **Expressions** evaluate to a resultant value. Let’s look at some examples.
+
+# Control flow

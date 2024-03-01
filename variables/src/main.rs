@@ -4,7 +4,7 @@ fn main() {
 //     x = 6; //cannot assign twice to immutable variable
 //     println!("The value of x is: {x}");
 
-/// now we make variable mut
+// now we make variable mut
 // fn main() {
 //     let mut x = 5;
 //     println!("The value of x is: {x}");
@@ -12,7 +12,7 @@ fn main() {
 //     println!("The value of x is: {x}");
 // }
 
-/// const
+// const
 // const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
 
 // / shadowing
@@ -33,7 +33,7 @@ fn main() {
 // let mut spaces = "   ";
 // spaces = spaces.len();
 
-/// Data type
+// Data type
 // let guess = "42".parse().expect("Not a number!");
 
 //float
@@ -82,5 +82,47 @@ fn main() {
 // }
 
 
+//functions
+// let sum = tushar(8);
+// println!("sum : {sum}")
+// fn tushar(x:i8) -> i8{
+//     let sum = x;
+//     return sum;
+// }
+
+//loops
+    // let mut counter = 0;
+
+    // let result = loop {
+    //     counter += 1;
+
+    //     if counter == 10 {
+    //         break counter * 2;
+    //     }
+    // };
+
+    // println!("The result is {result}");
+
+//while loop
+// fn main() {
+//     let mut number = 3;
+
+//     while number != 0 {
+//         println!("{number}!");
+
+//         number -= 1;
+//     }
+
+//     println!("LIFTOFF!!!");
+// }
+
+//for in
+// fn main() {
+//     let a = [10, 20, 30, 40, 50];
+
+//     for element in a {
+//         println!("the value is: {element}");
+//     }
+// }
 
 }
