@@ -92,8 +92,117 @@ fn main() {
     let mut spaces = "   ";
     spaces = spaces.len();
 ```
+
 - The error says we’re not allowed to mutate a variable’s type
 
 # Data types
 
-- 
+- converted a String to a numeric type using parse
+
+```rust
+let guess: u32 = "42".parse().expect("Not a number!");
+
+```
+
+- if we not give u32 : error[E0284]: type annotations needed
+
+## Scalar Types :
+
+1. integer
+1. float
+1. boolean
+1. character
+
+## Integer Types
+
+- integer types default to i32
+
+| Length  | Signed | Unsigned |
+| ------- | ------ | -------- |
+| 8-bit   | i8     | u8       |
+| 16-bit  | i16    | u16      |
+| 32-bit  | i32    | u32      |
+| 64-bit  | i64    | u64      |
+| 128-bit | i128   | u128     |
+| arch    | isize  | usize    |
+
+| Number literals | Example        |
+| --------------- | -------------- |
+| Decimal         | 98_222         |
+| Hex             | 0xff           |
+| Octal           | 0o77           |
+| Binary          | 0b1111_0000    |
+| Byte            | (u8 only) b'A' |
+
+## Floating-Point Types
+
+```rust
+fn main() {
+    let x = 2.0; // f64
+
+    let y: f32 = 3.0; // f32
+}
+```
+
+## Numeric Operations
+
+```rust
+fn main() {
+    // addition
+    let sum = 5 + 10;
+
+    // subtraction
+    let difference = 95.5 - 4.3;
+
+    // multiplication
+    let product = 4 * 30;
+
+    // division
+    let quotient = 56.7 / 32.2;
+    let truncated = -5 / 3; // Results in -1
+
+    // remainder
+    let remainder = 43 % 5;
+}
+```
+
+## The Boolean Type
+
+```rust
+fn main() {
+    let t = true;
+
+    let f: bool = false; // with explicit type annotation
+}
+```
+
+## The Character Type
+
+```rust
+fn main() {
+    let c = 'z';
+    let z: char = 'ℤ'; // with explicit type annotation
+    let heart_eyed_cat = '😻';
+}
+```
+
+## The Array Type
+
+```rust
+fn main() {
+    let a = [1, 2, 3, 4, 5];
+}
+```
+
+# Functions
+```rust
+fn main() {
+    println!("Hello, world!");
+
+    another_function();
+}
+
+fn another_function() {
+    println!("Another function.");
+}
+```
