@@ -44,5 +44,56 @@ fn main() {
 }
 ```
 
-- println for print something and ln for new line.
-- In full, the let mut guess = String::new(); line has created a mutable variable that is currently bound to a new, empty instance of a String. Whew!
+# Variables and Mutability
+
+- by default, variables are immutable
+- cannot assign twice to immutable variable
+
+```rust
+//for assign twice we make variable mutable.
+let mut x = 5;
+x = 10;
+```
+
+### const
+
+- you aren’t allowed to use mut with constants.
+- type of the value must be annotated.
+
+```rust
+const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
+```
+
+### Shadowing
+
+- Rustaceans say that the first variable is shadowed by the second
+- second variable is what the compiler will see when you use the name of the variable
+- We can shadow a variable by using the same variable’s name and repeating the use of the let keyword as follows
+- we not need to make variable mutable when we use let type twice for same variable name.
+
+```rust
+fn main() {
+    let x = 5;
+
+    let x = x + 1;//for reassign x we need to use let when we not write let so this gives us error : cannot assign twice to immutable variable.
+
+    { //we make scope using {}
+        let x = x * 2;
+        println!("The value of x in the inner scope is: {x}");
+    }
+
+    println!("The value of x is: {x}");
+}
+```
+
+- if we try to use mut for this, as shown here, we’ll get a compile-time error
+
+```rust
+    let mut spaces = "   ";
+    spaces = spaces.len();
+```
+- The error says we’re not allowed to mutate a variable’s type
+
+# Data types
+
+- 
