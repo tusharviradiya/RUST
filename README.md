@@ -194,6 +194,21 @@ fn main() {
 }
 ```
 
+## The String Type
+- declaration of string 
+```rust
+let s = String::from("hello");
+```
+
+- we need to make mutable string in rust
+```rust
+    let mut s = String::from("hello");
+
+    s.push_str(", world!"); // push_str() appends a literal to a String
+
+    println!("{}", s); // This will print `hello, world!`
+``` 
+
 # Functions
 
 ```rust
@@ -214,3 +229,70 @@ fn another_function() {
 - **Expressions** evaluate to a resultant value. Let’s look at some examples.
 
 # Control flow
+
+### if Expressions
+
+```rust
+fn main() {
+    let number = 3;
+
+    if number < 5 {
+        println!("condition was true");
+    } else {
+        println!("condition was false");
+    }
+}
+```
+
+### Loops
+
+```rust
+fn main() {
+    loop {
+        println!("again!");
+    }
+}
+```
+
+### while
+
+```rust
+fn main() {
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{number}!");
+
+        number -= 1;
+    }
+
+    println!("LIFTOFF!!!");
+}
+```
+
+### for
+
+```rust
+fn main() {
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {element}");
+    }
+}
+```
+
+# Ownership Rules
+
+- Each value in Rust has an owner.
+- There can only be one owner at a time.
+- When the owner goes out of scope, the value will be dropped.
+
+# Variable Scope
+```rust
+    {                      // s is not valid here, it’s not yet declared
+        let s = "hello";   // s is valid from this point forward
+
+        // do stuff with s
+    }                      // this scope is now over, and s is no longer valid
+```
