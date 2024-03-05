@@ -1,5 +1,5 @@
 fn main() {
-// ownership and function
+    // ownership and function
 //     let s = String::from("hello");  // s comes into scope
 
 //     takes_ownership(s);             // s's value moves into the function...
@@ -49,15 +49,30 @@ fn main() {
 
 // // This function takes a String and returns one
 // fn takes_and_gives_back(a_string: String) -> String { // a_string comes into
-//                                                       // scope
+    //                                                       // scope
+    
+    //     a_string  // a_string is returned and moves out to the calling function
+    
+    // the slice type
+    // fn main() {
+        //     let s = String::from("hello world!");
+        //     let hello = &s[1..8];
+        //     println!("{hello}");
+        // }
+        
+        // structure 
+        #[derive(Debug)]
+        struct User{
+            name: String,
+            number: u64,
+            district: String,
+        }
+        
+        let tushar = User {
+            name:String::from("viradiya tushar"), number: 9904974866, district:String::from("Amreli"),
+        };
 
-//     a_string  // a_string is returned and moves out to the calling function
-
-// the slice type
-// fn main() {
-//     let s = String::from("hello world!");
-//     let hello = &s[1..8];
-//     println!("{hello}");
-// }
+// println!("{tushar}");
+println!("{:#?}", tushar);
 
 }

@@ -401,3 +401,26 @@ fn calculate_length(s: &String) -> usize {
     let hello = &s[0..5];
     let world = &s[6..11];
 ```
+
+# tuple
+
+```rust
+fn main() {
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+}
+```
+
+# Structure
+
+- A struct, or structure, is a custom data type that lets you package together and name multiple related values that make up a meaningful group
+
+```rust
+// structure of structure
+struct User {
+    active: bool,
+    username: String,
+    email: String,
+    sign_in_count: u64,
+}
+```
+- 
