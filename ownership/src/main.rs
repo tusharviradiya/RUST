@@ -72,7 +72,8 @@ fn main() {
             name:String::from("viradiya tushar"), number: 9904974866, district:String::from("Amreli"),
         };
 
-// println!("{tushar}");
+// println!(tushar);
 println!("{:#?}", tushar);
+// println!(User.get(tushar));
 
 }
