@@ -391,5 +391,13 @@ fn calculate_length(s: &String) -> usize {
 ```
 
 ### The Slice Type
+
 - Slices let you reference a contiguous sequence of elements in a collection rather than the whole collection. A slice is a kind of reference,
 
+```rust
+    //slice of string
+    let s = String::from("hello world");
+
+    let hello = &s[0..5];
+    let world = &s[6..11];
+```

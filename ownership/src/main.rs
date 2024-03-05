@@ -1,5 +1,5 @@
+fn main() {
 // ownership and function
-// fn main() {
 //     let s = String::from("hello");  // s comes into scope
 
 //     takes_ownership(s);             // s's value moves into the function...
@@ -52,6 +52,12 @@
 //                                                       // scope
 
 //     a_string  // a_string is returned and moves out to the calling function
+
+// the slice type
+// fn main() {
+//     let s = String::from("hello world!");
+//     let hello = &s[1..8];
+//     println!("{hello}");
 // }
 
-// References and Borrowing
+}
