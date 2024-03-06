@@ -1,3 +1,7 @@
+
+#![allow(unused_variables)]
 fn main() {
-    println!("Hello, world!");
+for (index, value) in (5..10).enumerate() {
+    println!("index = {} and value = {}", index, value);
+}
 }
