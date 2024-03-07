@@ -37,7 +37,6 @@
 1. Early returns
 
 ```rust
-
 #![allow(unused_variables)]
 fn main() {
 fn foo(x: i32) -> i32 {
@@ -49,7 +48,6 @@ fn foo(x: i32) -> i32 {
 2. Diverging functions
 
 ```rust
-
 #![allow(unused_variables)]
 fn main() {
 fn diverges() -> ! {
@@ -61,7 +59,6 @@ fn diverges() -> ! {
 3. Function pointers
 
 ```rust
-
 #![allow(unused_variables)]
 fn main() {
 let f: fn(i32) -> i32;
@@ -95,11 +92,18 @@ let middle = &a[1..4]; // A slice of `a`: only the elements `1`, `2`, and `3`.
 }
 ```
 
+## {:?}
+
+- {:?} is used within the println! macro to print **debug representations** of values.
+- The debug representation of values in Rust is a textual representation of a value that is suitable for debugging purposes.
+- It typically includes enough information to identify the value and its internal structure, but it's not intended for human-readable output in the same way as a formatted string might be.
+
 ## Tuples
 
 ```rust
 let x = (1, "hello");
 let x: (i32, &str) = (1, "hello");
+let y:(i8, String, bool, char) = (-6, String::from("tushar"), true, 'a');
 ```
 
 1. Tuple Indexing
@@ -163,15 +167,14 @@ while !done {
     }
 }
 
-//for
-for (x = 0; x < 10; x++) {
-    printf( "%d\n", x );
-}
-
 //for in
 for x in 0..10 {
     println!("{}", x); // x: i32
 }
+for element in array.iter() {
+    println!("Current element is: {}", element);
+}
+// array.iter() returns an iterator over the elements of the array, allowing you to iterate over each element using a for loop.
 ```
 
 1. Enumerate
@@ -202,3 +205,74 @@ fn main() {
 ```
 
 ## Vectors
+
+- A ‘vector’ is a dynamic or ‘growable’ array, implemented as the standard library type Vec<T>. The T means that we can have vectors of any type
+
+```rust
+let v = vec![1, 2, 3, 4, 5]; // v: Vec<i32>
+let v = vec![0; 10]; // A vector of ten zeroes.
+//access element
+println!("v is {}", v[3]);
+println!("v is {:?}", v);
+
+// Accessing elements
+let i: usize = 0;
+let j: i32 = 0;
+// Works:
+v[i];
+// Doesn’t:
+v[j]; // you cannot index with an i32
+```
+
+#### Out-of-bounds Access
+
+```rust
+let v = vec![1, 2, 3];
+println!("Item 7 is {}", v[7]);
+
+//error handling
+let v = vec![1, 2, 3];
+match v.get(7) {
+    Some(x) => println!("Item 7 is {}", x),
+    None => println!("Sorry, this vector is too short.")
+}
+// you can use methods like get or get_mut that return None when given an invalid index
+```
+
+## Macro
+
+- macros are a powerful feature that allows you to write code that writes other code.
+- There are two main types of macros in Rust:
+  1. Declarative Macros (macro_rules!)
+  1. Procedural Macros
+
+## Iterating
+
+```rust
+// you can iterate through its elements with for. There are three versions:
+fn main() {
+let mut v = vec![1, 2, 3, 4, 5];
+
+for i in &v {
+    println!("A reference to {}", i);
+}
+
+for i in &mut v {
+    println!("A mutable reference to {}", i);
+}
+
+for i in v {
+    println!("Take ownership of the vector and its element {}", i);
+}
+}
+```
+- **Note** : You cannot use the vector again once you have iterated by taking ownership of the vector. You can iterate the vector multiple times by taking a reference to the vector whilst iterating.
+```rust
+let v = vec![1, 2, 3, 4, 5];
+for i in v {
+    println!("Take ownership of the vector and its element {}", i);
+}
+for i in v {
+    println!("Take ownership of the vector and its element {}", i);
+}
+```
