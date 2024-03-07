@@ -266,7 +266,9 @@ for i in v {
 }
 }
 ```
+
 - **Note** : You cannot use the vector again once you have iterated by taking ownership of the vector. You can iterate the vector multiple times by taking a reference to the vector whilst iterating.
+
 ```rust
 let v = vec![1, 2, 3, 4, 5];
 for i in v {
@@ -276,3 +278,330 @@ for i in v {
     println!("Take ownership of the vector and its element {}", i);
 }
 ```
+
+## Ownership
+
+- There are a few distinct concepts, each with its own chapter.
+
+1. ownership.
+1. borrowing, and their associated feature ‘references’.
+1. lifetimes, an advanced concept of borrowing.
+
+## Move semantics
+
+```rust
+let v = vec![1, 2, 3];
+
+let v2 = v;
+
+println!("v[0] is: {}", v[0]);
+
+/* error: use of moved value: `v`
+println!("v[0] is: {}", v[0]);
+                        ^ */
+```
+
+#### .truncate()
+
+- the .truncate() method is used to shorten a mutable String or Vec<T> (vector) to a specified length.
+
+## Copy types
+
+- However, there’s a trait that changes this behavior, and it’s called Copy.
+- We haven’t discussed traits yet, but for now, you can think of them as an annotation to a particular type that adds extra behavior.
+- All primitive types implement the Copy trait and their ownership is therefore not moved like one would assume, following the ‘ownership rules’.
+
+## References and Borrowing
+
+```rust
+#![allow(unused_variables)]
+fn main() {
+fn foo(v1: &Vec<i32>, v2: &Vec<i32>) -> i32 {
+    // Do stuff with `v1` and `v2`.
+
+    // Return the answer.
+    42
+}
+
+let v1 = vec![1, 2, 3];
+let v2 = vec![1, 2, 3];
+
+let answer = foo(&v1, &v2);
+
+// We can use `v1` and `v2` here!
+}
+```
+
+#### &mut references
+
+```rust
+fn main() {
+let mut x = 5;
+{
+    let y = &mut x;
+    *y += 1;
+}
+println!("{}", x);
+}
+```
+
+#### The Rules
+
+- Here are the rules for borrowing in Rust:
+
+First, any borrow must last for a scope no greater than that of the owner. Second, you may have one or the other of these two kinds of borrows, but not both at the same time:
+
+1. one or more references (&T) to a resource,
+1. exactly one mutable reference (&mut T).
+
+```rust
+let mut s = String::from("hello");
+
+let r1 = &s; // no problem
+let r2 = &s; // no problem
+let r3 = &mut s; // BIG PROBLEM
+
+println!("{}, {}, and {}", r1, r2, r3);
+```
+
+## Issues borrowing prevents
+
+```rust
+let mut v = vec![1, 2, 3];
+
+for i in &v {
+    println!("{}", i);
+    v.push(34);
+}// error: cannot borrow `v` as mutable because it is also borrowed as immutable
+```
+
+## Use after free
+
+```rust
+let y: &i32;
+{
+    let x = 5;
+    y = &x;
+}
+
+println!("{}", y);
+/*
+error: `x` does not live long enough
+    y = &x;
+         ^
+note: reference must be valid for the block suffix following statement 0 at
+2:16...
+let y: &i32;
+{
+    let x = 5;
+    y = &x;
+}
+
+note: ...but borrowed value is only valid for the block suffix following
+statement 0 at 4:18
+    let x = 5;
+    y = &x;
+}
+*/
+```
+
+## let y: &i32
+
+- In Rust, declaring a variable as &i32 indicates that it's a reference to an i32 value, rather than the i32 value itself. Here's why you might choose to use a reference (&i32) instead of the value directly (i32)
+
+## Lifetimes
+
+- Lending out a reference to a resource that someone else owns can be complicated. For example, imagine this set of operations.
+
+## Structs
+
+```rust
+struct Point3d {
+    x: i32,
+    y: i32,
+    z: i32,
+}
+```
+
+#### Tuple structs
+
+```rust
+struct Color(i32, i32, i32);
+```
+
+## Enums
+
+- An enum in Rust is a type that represents data that is one of several possible variants. Each variant in the enum can optionally have data associated with it.
+
+```rust
+fn main() {
+enum Message {
+    Quit,
+    ChangeColor(i32, i32, i32),
+    Move { x: i32, y: i32 },
+    Write(String),
+}
+}
+```
+
+## Match
+
+```rust
+fn main() {
+let x = 5;
+
+match x {
+    1 => println!("one"),
+    2 => println!("two"),
+    3 => println!("three"),
+    4 => println!("four"),
+    5 => println!("five"),
+    _ => println!("something else"),
+}
+}
+```
+
+#### Matching on enums
+
+```rust
+fn main() {
+enum Message {
+    Quit,
+    ChangeColor(i32, i32, i32),
+    Move { x: i32, y: i32 },
+    Write(String),
+}
+
+fn quit() { /* ... */ }
+fn change_color(r: i32, g: i32, b: i32) { /* ... */ }
+fn move_cursor(x: i32, y: i32) { /* ... */ }
+
+fn process_message(msg: Message) {
+    match msg {
+        Message::Quit => quit(),
+        Message::ChangeColor(r, g, b) => change_color(r, g, b),
+        Message::Move { x, y: new_name_for_y } => move_cursor(x, new_name_for_y),
+        Message::Write(s) => println!("{}", s),
+    };
+}
+}
+```
+
+## Patterns
+
+#### Ignoring bindings
+
+```rust
+fn main() {
+let some_value: Result<i32, &'static str> = Err("There was an error");
+match some_value {
+    Ok(value) => println!("got a value: {}", value),
+    Err(_) => println!("an error occurred"),
+}
+}
+```
+
+#### ref and ref mut
+
+```rust
+fn main() {
+let x = 5;
+
+match x {
+    ref r => println!("Got a reference to {}", r),
+}
+}
+```
+
+#### Ranges
+
+```rust
+let x = 1;
+
+match x {
+    1 ... 5 => println!("one through five"),
+    _ => println!("anything"),
+}
+```
+
+## Strings
+
+- Rust has two main types of strings: &str and String
+- Let’s talk about &str first. These are called ‘string slices’. A string slice has a fixed size, and cannot be mutated. It is a reference to a sequence of UTF-8 bytes.
+- A String is a heap-allocated string. This string is growable, and is also guaranteed to be UTF-8. Strings are commonly created by converting from a string slice using the to_string method.
+
+```rust
+let mut s = "Hello".to_string(); // mut s: String
+let s:String = String::from("tushar");
+```
+
+## Generics
+
+- when writing a function or data type, we may want it to work for multiple types of arguments. In Rust, we can do this with generics
+
+```rust
+fn main() {
+enum Option<T> {
+    Some(T),
+    None,
+}
+}
+//Rust’s standard library provides a type, Option<T>, that’s generic
+let x: Option<i32> = Some(5);
+
+// Generics don’t have to only be generic over one type. Consider another type from Rust’s standard library that’s similar, Result<T, E>
+fn main() {
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+}
+```
+
+#### Generic functions
+
+```rust
+fn takes_anything<T>(x: T) {
+    // Do something with `x`.
+}
+```
+
+#### Generic structs
+
+```rust
+fn main() {
+struct Point<T> {
+    x: T,
+    y: T,
+}
+
+let int_origin = Point { x: 0, y: 0 };
+let float_origin = Point { x: 0.0, y: 0.0 };
+}
+```
+
+## Traits
+
+- except that we first define a trait with a method signature, then implement the trait for a type.
+
+```rust
+fn main() {
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+trait HasArea {
+    fn area(&self) -> f64;
+}
+
+impl HasArea for Circle {
+    fn area(&self) -> f64 {
+        std::f64::consts::PI * (self.radius * self.radius)
+    }
+}
+}
+```
+
+## Drop
