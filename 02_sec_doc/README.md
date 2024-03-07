@@ -605,3 +605,130 @@ impl HasArea for Circle {
 ```
 
 ## Drop
+
+- The Drop trait provides a way to run some code when a value goes out of scope. For example.
+
+```rust
+struct HasDrop;
+
+impl Drop for HasDrop {
+    fn drop(&mut self) {
+        println!("Dropping!");
+    }
+}
+
+fn main() {
+    let x = HasDrop;
+
+    // Do stuff.
+
+} // `x` goes out of scope here.
+
+```
+
+## if let
+
+- if let permits patterns matching within the condition of an if statement. This allows us to reduce the overhead of certain kinds of pattern matches and express them in a more convenient way.
+
+```rust
+fn main() {
+let option = Some(5);
+fn foo(x: i32) { }
+fn bar() { }
+if let Some(x) = option {
+    foo(x);
+} else {
+    bar();
+}
+}
+```
+
+## while let
+
+```rust
+fn main() {
+let mut v = vec![1, 3, 5, 7, 11];
+loop {
+    match v.pop() {
+        Some(x) =>  println!("{}", x),
+        None => break,
+    }
+}
+}
+```
+
+## Closures
+
+```rust
+fn main() {
+let plus_one = |x: i32| x + 1;
+
+assert_eq!(2, plus_one(1));
+}
+```
+
+- We create a binding, plus_one, and assign it to a closure. The closure’s arguments go between the pipes (|), and the body is an expression, in this case, x + 1. Remember that { } is an expression, so we can have multi-line closures too.
+
+## Crates and Modules
+
+- some of your functionality is private, and some is public. To facilitate these kinds of things, Rust has a module system.
+
+## const and static
+
+#### const
+
+- Constants live for the entire lifetime of a program. More specifically, constants in Rust have no fixed address in memory. This is because they’re effectively inlined to each place that they’re used. References to the same constant are not necessarily guaranteed to refer to the same memory address for this reason.
+
+#### static
+
+- Rust provides a ‘global variable’ sort of facility in static items. They’re similar to constants, but static items aren’t inlined upon use. This means that there is only one instance for each value, and it’s at a fixed location in memory.
+
+## Attributes
+
+```rust
+#[test]
+#![test]
+```
+
+- difference between them
+
+```rust
+#[foo]
+struct Foo;
+
+mod bar {
+    #![bar]
+}
+```
+
+- The #[foo] attribute applies to the next item, which is the struct declaration. The #![bar] attribute applies to the item enclosing it, which is the mod declaration. Otherwise, they’re the same. Both change the meaning of the item they’re attached to somehow.
+- Attributes may also have additional data and key/value
+
+```rust
+#[inline(always)]
+#[cfg(target_os = "macos")]
+```
+
+## Type Aliases
+
+- The type keyword lets you declare an alias of another type.
+- You can then use this type as if it were a real type.
+
+```rust
+type Name = String;
+
+let x: Name = "Hello".to_string();
+```
+
+## Casting Between Types
+
+#### as
+
+```rust
+let x: i32 = 5;
+
+let y = x as i64;
+```
+
+#### transmute
+- The transmute function is very simple, but very scary. It tells Rust to treat a value of one type as though it were another type. It does this regardless of the typechecking system, and completely trusts you.
