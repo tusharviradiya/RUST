@@ -1,17 +1,13 @@
 
 #![allow(unused_variables)]
 fn main() {
-let mut v = vec![1, 2, 3, 4, 5];
+let mut x = 5;
+{
+    let y = &mut x;
+    *y += 1;
 
-for i in &v {
-    println!("A reference to {}", i);
+    let z = &mut x;
+    *z += 4;
 }
-
-for i in &mut v {
-    println!("A mutable reference to {}", i);
-}
-
-for i in v {
-    println!("Take ownership of the vector and its element {}", i);
-}
+println!("{}", x);
 }
