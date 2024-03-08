@@ -743,5 +743,3 @@ let y = x as i64;
 ```rust
 struct Foo<T: ?Sized>
 ```
-
-## Macros
