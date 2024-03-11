@@ -743,3 +743,9 @@ let y = x as i64;
 ```rust
 struct Foo<T: ?Sized>
 ```
+
+# fork sushiswap and create fork of sushiswap
+
+## what is uniswap?
+
+- The term "ERC-20 token" refers to a specific type of digital asset built on the Ethereum blockchain. ERC-20 stands for "Ethereum Request for Comment 20," which is a standard interface for fungible tokens on the Ethereum network.
