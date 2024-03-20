@@ -36,3 +36,13 @@
 //     modifies(&mut res);
 //     println!("res is {}", res);
 // }
+
+// fn main(){
+//     let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+//     let slice1 = &arr[..4];
+//     let slice2 = &arr[4..];
+//     let slice3 = &arr[4..6];
+//     println!("{:?}", slice1);
+//     println!("{:?}", slice2);
+//     println!("{:?}", slice3);
+// }
