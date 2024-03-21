@@ -1,7 +1,7 @@
 // SALXAT3ROTHPXAG6AM272Y4KXL75GSIXEXRYKIOTEJWNG4LREAQSTUUF
-use stellar_sdk::crypto::Keypair;
-use stellar_sdk::sync::Client;
-use stellar_sdk::error::Result;
+// use stellar_sdk::crypto::Keypair;
+// use stellar_sdk::sync::Client;
+// use stellar_sdk::error::Result;
 
 fn main() {
     // Set up the Stellar client for the testnet
