@@ -5,7 +5,7 @@
 
 fn main() {
     // Set up the Stellar client for the testnet
-    let client = Client::horizon("https://horizon-testnet.stellar.org".to_string());
+    let client = Sorizon("https://horizon-testnet.stellar.org".to_string());
 
     // Define your Stellar account's public key
     let account_id = "SALXAT3ROTHPXAG6AM272Y4KXL75GSIXEXRYKIOTEJWNG4LREAQSTUUF";
