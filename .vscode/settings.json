@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "./free_code_camp/variables/Cargo.toml"
+    ]
+}
