@@ -5,8 +5,12 @@ fn main() {
     // println!("{}", s);
     // println!("{}", s.to_string());
 
-    let str = String::from("hello");
-    let h = &str[..3];
-    println!("{}", h);
+    // let str = String::from("hello");
+    // let h = &str[..3];
+    // println!("{}", h);
+
+    for c in "viradiya tushar".chars() {
+        println!("{}", c)
+    }
 }
 
