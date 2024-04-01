@@ -39,3 +39,7 @@
 ## Struct
 - A type that is composed of other types
 - tuple struct
+
+## Enum
+- a type that represents data that is one of several possible variants
+- option enum
