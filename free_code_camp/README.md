@@ -28,3 +28,10 @@
 - in String data stored in heap
 - in String type variable is hold pointer of data not data
 - in string we use .push_str() and .push() both for push string
+
+### Array
+- fixed size array and same data type and continues memory block in stack memory
+- slice which use &str type and 7s[1..4] in this 4 is not counted
+
+### Tuple
+- in this different type of data is group together and stored in stack.
