@@ -13,3 +13,14 @@
 - You cannot print out an array in the usual way with {} but you can do a debug print with {:?}.
 
 - in rust language when we not assign any type do i32 and f64 id assigning by default.
+
+### ownership
+- set of rule whit rule memory management.
+- rules are enforce at compile time.
+
+### Borrowing
+- is without taking ownership of data
+- in this you are taking reference of data not data itself
+
+### String vs &str
+- 
