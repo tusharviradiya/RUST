@@ -36,10 +36,14 @@
 ### Tuple
 - in this different type of data is group together and stored in stack.
 
-## Struct
+### Struct
 - A type that is composed of other types
 - tuple struct
 
-## Enum
+### Enum
 - a type that represents data that is one of several possible variants
 - option enum
+
+### Control Flow
+- control the flow of operation which is execution in a sequence.
+- 
