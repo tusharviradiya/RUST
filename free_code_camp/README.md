@@ -35,3 +35,7 @@
 
 ### Tuple
 - in this different type of data is group together and stored in stack.
+
+## Struct
+- A type that is composed of other types
+- tuple struct

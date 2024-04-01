@@ -1,7 +1,7 @@
 struct Point1 {
     x: i32,
     y: i32,
-    z: Stirng,
+    z: String,
     q: bool,
     r: f64
 }
@@ -11,7 +11,7 @@ fn main() {
     // println!("Hello, world!");
     let arr: [i32; 5] = [1, 2, 3, 4, 5];
     println!("{:?}", arr);
-    let tup1 = (1, 2, "tushar", true, 5.01);
+    let tup1 = (1, 2, String::from("tushar"), true, 5.01);
     println!("{:?}", tup1);
 
 }
