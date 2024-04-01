@@ -23,4 +23,8 @@
 - in this you are taking reference of data not data itself
 
 ### String vs &str
-- 
+- in rust language memory is allocated by default in stack
+- String is mutable and &str is immutable by default
+- in String data stored in heap
+- in String type variable is hold pointer of data not data
+- in string we use .push_str() and .push() both for push string
