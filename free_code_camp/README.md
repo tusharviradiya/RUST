@@ -53,3 +53,10 @@
 ### Methods
 - function associated with particular type or struct
 - associated function
+
+### Generics
+- placeholder for concrete types
+- enable to write more reusable and flexible code
+- zero cost abstraction
+- const generic : represent compile time constant value.
+- 
