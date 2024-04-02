@@ -48,4 +48,8 @@
 - control the flow of operation which is execution in a sequence.
 
 ### Pattern Matching
-- 
+- pattern match using matches! macro and if let 
+
+### Methods
+- function associated with particular type or struct
+- associated function
