@@ -59,3 +59,6 @@
 - enable to write more reusable and flexible code
 - zero cost abstraction
 - const generic : represent compile time constant value.
+
+### traits
+- 
