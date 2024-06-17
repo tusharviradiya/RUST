@@ -1,3 +1,7 @@
 /target
 /Cargo.lock
-/var/www/html/learning/RUST/04_revision_rust/hello_cargo/target
+/var/www/html/learning/RUST/04_revision_rust/chapter1/hello_cargo/target
+/var/www/html/learning/RUST/04_revision_rust/chapter2/guessing_game/target
+04_revision_rust/chapter3/datatype/target
+/var/www/html/learning/RUST/04_revision_rust/chapter3/functions/target
+/var/www/html/learning/RUST/04_revision_rust/chapter3/variable_mutability/target
