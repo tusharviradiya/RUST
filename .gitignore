@@ -9,3 +9,6 @@
 /var/www/html/learning/RUST/04_revision_rust/chapter4/ownership/Cargo.lock
 /var/www/html/learning/RUST/04_revision_rust/chapter4/slice_type/target
 /var/www/html/learning/RUST/04_revision_rust/chapter5/struct_type/target
+/var/www/html/learning/RUST/04_revision_rust/chapter5/method_implementation/target
+/var/www/html/learning/RUST/04_revision_rust/chapter6/enum_type/target
+/var/www/html/learning/RUST/04_revision_rust/chapter6/match_iflet/target
